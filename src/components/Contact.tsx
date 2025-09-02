@@ -121,7 +121,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Email</h4>
-                  <p className="text-gray-400">diya.nathwani@email.com</p>
+                  <p className="text-gray-400">diyanathwani6563@gmail.com</p>
                 </div>
               </div>
 
@@ -131,7 +131,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Phone</h4>
-                  <p className="text-gray-400">+91 98765 43210</p>
+                  <p className="text-gray-400">+91-8407976805</p>
                 </div>
               </div>
 
@@ -151,7 +151,7 @@ const Contact: React.FC = () => {
               <h4 className="text-xl font-bold text-white mb-4">Connect With Me</h4>
               <div className="flex space-x-4">
                 <a
-                  href="https://linkedin.com/in/diyanathwani"
+                  href="https://www.linkedin.com/in/diya-nathwani6622/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-blue-600/20 rounded-lg border border-blue-600/30 hover:bg-blue-600/30 hover:border-blue-600/50 transition-all hover:scale-110"
@@ -159,7 +159,7 @@ const Contact: React.FC = () => {
                   <Linkedin size={24} className="text-blue-400" />
                 </a>
                 <a
-                  href="https://instagram.com/diyanathwani"
+                  href="https://www.instagram.com/mindonecstasy_"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-pink-600/20 rounded-lg border border-pink-600/30 hover:bg-pink-600/30 hover:border-pink-600/50 transition-all hover:scale-110"
@@ -167,7 +167,7 @@ const Contact: React.FC = () => {
                   <Instagram size={24} className="text-pink-400" />
                 </a>
                 <a
-                  href="mailto:diya.nathwani@email.com"
+                  href="mailto:diyanathwani6563@gmail.com"
                   className="p-3 bg-green-600/20 rounded-lg border border-green-600/30 hover:bg-green-600/30 hover:border-green-600/50 transition-all hover:scale-110"
                 >
                   <Mail size={24} className="text-green-400" />

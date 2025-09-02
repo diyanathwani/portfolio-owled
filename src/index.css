@@ -303,6 +303,107 @@ html {
   }
 }
 
+/* Section title */
+.section-title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(45deg, #ff0064, #0064ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Category tab styles */
+.category-tab {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 10;
+}
+
+/* Achievement styles */
+.achievement-tile {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+.neon-text {
+  color: #ec4899;
+  text-shadow: 0 0 10px #ec4899, 0 0 20px #ec4899, 0 0 30px #ec4899;
+}
+
+/* MediaRadar slide-in animations */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 0.3s ease-out forwards;
+}
+
+/* Owl Animation Styles */
+.owl-animation {
+  filter: drop-shadow(0 0 10px rgba(16, 96, 224, 0.5));
+  animation: owlFloat 3s ease-in-out infinite;
+}
+
+@keyframes owlFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.owl-animation:hover {
+  filter: drop-shadow(0 0 20px rgba(208, 48, 112, 0.8));
+  animation: owlPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes owlPulse {
+  0%, 100% {
+    transform: scale(1) translateY(0px);
+  }
+  50% {
+    transform: scale(1.05) translateY(-5px);
+  }
+}
+
+.owl-eye {
+  animation: owlBlink 4s infinite;
+}
+
+@keyframes owlBlink {
+  0%, 90%, 100% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.3;
+  }
+}
+
+.owl-ear {
+  animation: owlEarTwitch 5s infinite;
+  transform-origin: center;
+}
+
+@keyframes owlEarTwitch {
+  0%, 95%, 100% {
+    transform: rotate(0deg);
+  }
+  97% {
+    transform: rotate(5deg);
+  }
+}
+
 /* Background gradients */
 .bg-gradient-radial {
   background: radial-gradient(circle at center, rgba(255, 0, 100, 0.1) 0%, rgba(0, 100, 255, 0.05) 30%, transparent 70%);

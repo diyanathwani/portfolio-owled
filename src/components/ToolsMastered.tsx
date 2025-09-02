@@ -95,26 +95,6 @@ const ToolsMastered: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Additional stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div className="fade-in-delayed">
-            <div className="text-4xl font-black font-montserrat text-pink-400 mb-2">25+</div>
-            <div className="text-gray-400">Tools Mastered</div>
-          </div>
-          <div className="fade-in-delayed">
-            <div className="text-4xl font-black font-montserrat text-blue-400 mb-2">50+</div>
-            <div className="text-gray-400">Projects Completed</div>
-          </div>
-          <div className="fade-in-delayed">
-            <div className="text-4xl font-black font-montserrat text-pink-400 mb-2">15+</div>
-            <div className="text-gray-400">Happy Clients</div>
-          </div>
-          <div className="fade-in-delayed">
-            <div className="text-4xl font-black font-montserrat text-blue-400 mb-2">3+</div>
-            <div className="text-gray-400">Years Experience</div>
-          </div>
-        </div>
       </div>
     </section>
   );

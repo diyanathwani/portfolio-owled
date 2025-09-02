@@ -15,12 +15,12 @@ const Navigation: React.FC = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#hero' },
     { name: 'About Me', href: '#story' },
+    { name: 'Tools', href: '#tools' },
     { name: 'Career Glimpse', href: '#career' },
-    { name: 'Categories', href: '#categories' },
+    { name: 'Media Radar', href: '#media-radar' },
+    { name: 'Achievements', href: '#achievements' },
     { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Gallery', href: '#gallery' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -52,14 +52,24 @@ const Navigation: React.FC = () => {
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="flex items-center space-x-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">
+            <a 
+              href="https://drive.google.com/file/d/1NMy4RnTABgUIFH9JjmbyNt5s-4GXCl0o/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors"
+            >
               <Download size={16} />
               <span>Resume</span>
-            </button>
-            <button className="neon-button flex items-center space-x-2">
+            </a>
+            <a 
+              href="https://drive.google.com/drive/folders/1ZG4zViIWimldxahLyrbXHh9AHk5DkAkK?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="neon-button flex items-center space-x-2"
+            >
               <Briefcase size={16} />
               <span>Portfolio</span>
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -88,14 +98,24 @@ const Navigation: React.FC = () => {
                 </a>
               ))}
               <div className="flex flex-col space-y-2 pt-4">
-                <button className="flex items-center justify-center space-x-2 bg-gray-800 hover:bg-gray-700 px-4 py-3 rounded-lg transition-colors">
+                <a 
+                  href="https://drive.google.com/file/d/1NMy4RnTABgUIFH9JjmbyNt5s-4GXCl0o/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center space-x-2 bg-gray-800 hover:bg-gray-700 px-4 py-3 rounded-lg transition-colors"
+                >
                   <Download size={16} />
                   <span>Resume</span>
-                </button>
-                <button className="neon-button flex items-center justify-center space-x-2">
+                </a>
+                <a 
+                  href="https://drive.google.com/drive/folders/1ZG4zViIWimldxahLyrbXHh9AHk5DkAkK?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="neon-button flex items-center justify-center space-x-2"
+                >
                   <Briefcase size={16} />
                   <span>Portfolio</span>
-                </button>
+                </a>
               </div>
             </div>
           </div>

@@ -3,11 +3,15 @@ import CustomCursor from './components/CustomCursor';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import MyStory from './components/MyStory';
-import CareerHierarchy from './components/CareerHierarchy';
-import ContentCategories from './components/ContentCategories';
+import Stats from './components/Stats';
+// import CareerHierarchy from './components/CareerHierarchy';
+// import ContentCategories from './components/ContentCategories';
 import ToolsMastered from './components/ToolsMastered';
+import CareerHierarchy from './components/CareerHierarchy';
+import MediaRadar from './components/MediaRadar';
+import Achievements from './components/Achievements';
 import Testimonials from './components/Testimonials';
-import Gallery from './components/Gallery';
+// import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 
 function App() {
@@ -17,11 +21,14 @@ function App() {
       <Navigation />
       <Hero />
       <MyStory />
-      <CareerHierarchy />
-      <ContentCategories />
+      <Stats />
       <ToolsMastered />
+      <CareerHierarchy />
+      {/* <ContentCategories /> */}
+      <MediaRadar />
+      <Achievements />
       <Testimonials />
-      <Gallery />
+      {/* <Gallery /> */}
       <Contact />
     </div>
   );
