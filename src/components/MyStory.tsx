@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, GraduationCap, Edit3, Users, Target } from 'lucide-react';
+import { GraduationCap, Edit3, Users, Target } from 'lucide-react';
 
 const MyStory: React.FC = () => {
   return (
@@ -13,8 +13,12 @@ const MyStory: React.FC = () => {
             <div className="relative">
               <div className="bg-gray-900 border-2 border-gray-700 rounded-lg p-8 hover-card">
                 <div className="border-2 border-pink-500 rounded-lg p-4 mb-4">
-                  <div className="w-64 h-80 mx-auto bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg flex items-center justify-center">
-                    <User size={80} className="text-gray-600" />
+                  <div className="w-64 h-80 mx-auto bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg overflow-hidden">
+                    <img 
+                      src="https://drive.google.com/uc?export=view&id=1Vt3JTNIDoFuP2fnJE9MO3OIfCaf9Y7km" 
+                      alt="Diya Nathwani" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 <div className="text-center">
