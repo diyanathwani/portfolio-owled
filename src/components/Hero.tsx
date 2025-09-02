@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Main heading */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-montserrat uppercase tracking-wider mb-6 fade-in-delayed">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-black font-montserrat uppercase tracking-wider mb-6 fade-in-delayed">
           <span className="block glow-text">DIYA's</span>
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-400">
             Content Hub
