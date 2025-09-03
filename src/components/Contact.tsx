@@ -166,16 +166,13 @@ const Contact: React.FC = () => {
                 >
                   <Instagram size={24} className="text-pink-400" />
                 </a>
-                <a
-                  href="mailto:diyanathwani6563@gmail.com"
-                  className="p-3 bg-green-600/20 rounded-lg border border-green-600/30 hover:bg-green-600/30 hover:border-green-600/50 transition-all hover:scale-110"
-                >
-                  <Mail size={24} className="text-green-400" />
-                </a>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+};
 
-       
 export default Contact;
