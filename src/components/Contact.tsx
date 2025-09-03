@@ -177,23 +177,5 @@ const Contact: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16 fade-in-delayed">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Ready to make your content the <span className="text-pink-400">chhupa rustom boss</span> of your industry?
-            </h3>
-            <p className="text-gray-400 text-lg mb-8">
-              Let's schedule a call and discuss how we can elevate your brand's storytelling game.
-            </p>
-            <button className="neon-button text-lg px-8 py-4">
-              Schedule a Free Consultation
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
+       
 export default Contact;
