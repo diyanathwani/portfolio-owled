@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Main heading */}
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-black font-montserrat uppercase tracking-wider mb-6 fade-in-delayed">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black font-montserrat uppercase tracking-wider mb-6 fade-in-delayed">
           <span className="block glow-text">DIYA's</span>
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-400">
             Content Hub
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
             "Content isn't the King. It's the <span className="text-pink-400 font-semibold">Kingmaker!</span>"
             <span className="ml-2 text-2xl">👑</span>
           </p>
-          <p className="text-lg md:text-xl text-gray-400 italic leading-relaxed">
+          <p className="text-base md:text-lg text-gray-400 italic leading-relaxed">
             We see reels, videos, visuals flashing by… but it all begins with a pen and paper. Platforms change. Trends evolve. 
             But content? It stays the ultimate <span className="text-pink-400 font-semibold">Chhupa Rustom</span> of the media game!
           </p>
