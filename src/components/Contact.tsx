@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Linkedin, Instagram, Send, Phone, MapPin } from 'lucide-react';
+import { Mail, Linkedin, Instagram, Phone, MapPin } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -92,13 +92,15 @@ const Contact: React.FC = () => {
                 />
               </div>
 
-              <button
-                type="submit"
+              <a
+                href="https://www.linkedin.com/in/diya-nathwani6622/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="neon-button w-full flex items-center justify-center space-x-3 text-lg py-4"
               >
-                <Send size={20} />
+                <Linkedin size={20} />
                 <span>Work With Me</span>
-              </button>
+              </a>
             </form>
           </div>
 
@@ -165,6 +167,12 @@ const Contact: React.FC = () => {
                   className="p-3 bg-pink-600/20 rounded-lg border border-pink-600/30 hover:bg-pink-600/30 hover:border-pink-600/50 transition-all hover:scale-110"
                 >
                   <Instagram size={24} className="text-pink-400" />
+                </a>
+                <a
+                  href="mailto:diyanathwani6563@gmail.com"
+                  className="p-3 bg-green-600/20 rounded-lg border border-green-600/30 hover:bg-green-600/30 hover:border-green-600/50 transition-all hover:scale-110"
+                >
+                  <Mail size={24} className="text-green-400" />
                 </a>
               </div>
             </div>

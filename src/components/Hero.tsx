@@ -61,8 +61,12 @@ const Hero: React.FC = () => {
             <span>See My Portfolio</span>
           </a>
           <a 
-            href="mailto:diyanathwani6563@gmail.com"
+            href="#contact"
             className="neon-button flex items-center space-x-3"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}
           >
             <Mail size={20} />
             <span>Contact Me</span>
