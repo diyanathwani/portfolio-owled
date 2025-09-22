@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { ArrowDown, Download, Eye, Linkedin } from 'lucide-react';
+
+// Lazy load non-critical components
+const LazyBackgroundEffects = lazy(() => import('./ui/LazyBackgroundEffects'));
 
 const Hero: React.FC = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute inset-0 bg-gradient-radial"></div>
-      <div className="absolute inset-0 grid-bg opacity-20"></div>
-      
-      {/* Animated background elements */}
-      <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-conic rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-radial rounded-full blur-3xl animate-pulse delay-1000"></div>
+      {/* Background gradients - Optimized with lazy loading */}
+      <Suspense fallback={<div className="absolute inset-0 bg-black"></div>}>
+        <LazyBackgroundEffects />
+      </Suspense>
 
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
         {/* Logo animation placeholder */}
         <div className="mb-8 fade-in">
-          <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-r from-pink-500 to-blue-500 flex items-center justify-center glow-text">
-            <span className="text-xl font-bold font-montserrat">DN</span>
+          <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-r from-pink-500 to-blue-500 flex items-center justify-center glow-text" aria-hidden="true">
+            <span className="sr-only">Diya Nathwani Logo</span>
+            <span className="text-xl font-bold font-montserrat" aria-hidden="true">DN</span>
           </div>
         </div>
 
@@ -32,7 +33,7 @@ const Hero: React.FC = () => {
         <div className="mb-12 max-w-4xl mx-auto fade-in-delayed">
           <p className="text-xl md:text-2xl text-gray-300 mb-4">
             "Content isn't the King. It's the <span className="text-pink-400 font-semibold">Kingmaker!</span>"
-            <span className="ml-2 text-2xl">👑</span>
+            <span className="ml-2 text-2xl" role="img" aria-label="Crown emoji">👑</span>
           </p>
           <p className="text-base md:text-lg text-gray-400 italic leading-relaxed">
             We see reels, videos, visuals flashing by… but it all begins with a pen and paper. Platforms change. Trends evolve. 

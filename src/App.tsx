@@ -1,5 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { Routes, Route } from 'react-router-dom';
 import CustomCursor from './components/CustomCursor';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
@@ -33,15 +32,11 @@ const Home = () => (
 function App() {
   return (
     <div className="app relative">
-      <HelmetProvider>
-        <BrowserRouter>
-          <CustomCursor />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/article/:id" element={<ArticlePage />} />
-          </Routes>
-        </BrowserRouter>
-      </HelmetProvider>
+      <CustomCursor />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/article/:id" element={<ArticlePage />} />
+      </Routes>
     </div>
   );
 }

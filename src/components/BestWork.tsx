@@ -1,6 +1,9 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { getOgImage } from '../utils/ogImageFetcher';
+
+// Lazy load the image component
+const LazyImage = lazy(() => import('./ui/LazyImage'));
 
 // Predefined placeholder images for better loading experience
 const placeholderImages = [
@@ -28,7 +31,9 @@ const BestWork = () => {
 
   // Function to get a placeholder image based on project index
   const getPlaceholderImage = useCallback((index: number) => {
-    return placeholderImages[index % placeholderImages.length];
+    // Inline placeholder SVG to avoid external requests
+    const placeholderSvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23ffffff'%3ELoading...%3C/text%3E%3C/svg%3E`;
+    return placeholderSvg;
   }, []);
 
   useEffect(() => {
@@ -140,64 +145,54 @@ const BestWork = () => {
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((projectItem, index) => (
             <div 
-              key={project.id} 
+              key={projectItem.id} 
               className="group bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
               <Link 
-                to={project.type === 'pdf' ? project.pdfLink || '#' : project.link} 
+                to={projectItem.type === 'pdf' ? projectItem.pdfLink || '#' : projectItem.link} 
                 className="block h-full group-hover:no-underline"
-                target={project.type === 'pdf' || project.externalLink ? '_blank' : undefined}
-                rel={project.type === 'pdf' || project.externalLink ? 'noopener noreferrer' : undefined}
+                target={projectItem.type === 'pdf' || projectItem.externalLink ? '_blank' : undefined}
+                rel={projectItem.type === 'pdf' || projectItem.externalLink ? 'noopener noreferrer' : undefined}
               >
                 <div className="h-48 bg-gray-700 overflow-hidden relative">
-                  {project.loading ? (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+                  <Suspense fallback={<div className="w-full h-full bg-gray-700 animate-pulse"></div>}>
+                    <LazyImage 
+                      src={projectItem.thumbnail || getPlaceholderImage(index)}
+                      alt={projectItem.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      width={800}
+                      height={400}
+                    />
+                  </Suspense>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                    <div className="bg-blue-600/90 text-white px-4 py-2 rounded-full flex items-center">
+                      <span>{projectItem.type === 'pdf' ? 'View PDF' : 'View Article'}</span>
+                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
                     </div>
-                  ) : (
-                    <>
-                      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors z-10"></div>
-                      <img 
-                        src={project.thumbnail || getPlaceholderImage(index)}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-                        loading="lazy"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = getPlaceholderImage(index);
-                        }}
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
-                        <div className="bg-blue-600/90 text-white px-4 py-2 rounded-full flex items-center">
-                          <span>{project.type === 'pdf' ? 'View PDF' : 'View Article'}</span>
-                          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="absolute top-3 right-3 bg-blue-600 text-white text-xs px-2 py-1 rounded-full z-10">
-                        {project.tag}
-                      </div>
-                      {project.type === 'pdf' && (
-                        <div className="absolute top-2 right-2 text-white bg-black/50 rounded-full p-1 z-10">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                          </svg>
-                        </div>
-                      )}
-                    </>
+                  </div>
+                  <div className="absolute top-3 right-3 bg-blue-600 text-white text-xs px-2 py-1 rounded-full z-10">
+                    {projectItem.tag}
+                  </div>
+                  {projectItem.type === 'pdf' && (
+                    <div className="absolute top-2 right-2 text-white bg-black/50 rounded-full p-1 z-10">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
+                    </div>
                   )}
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                    {project.title}
+                    {projectItem.title}
                   </h3>
                   <p className="text-gray-300 mb-4 line-clamp-2">
-                    {project.description}
+                    {projectItem.description}
                   </p>
                   <div className="flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
                     <span className="text-sm font-medium">Read More</span>
