@@ -35,33 +35,22 @@ const MyStory: React.FC = () => {
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Owl Animation */}
+            {/* Owl Animation - Commented Out But Preserved
             <div className="order-2 md:order-1">
               <div className="w-96 h-96 mx-auto mb-6 relative">
                 <svg viewBox="0 0 120 120" className="w-full h-full owl-animation">
-                  {/* Owl Body */}
                   <ellipse cx="60" cy="70" rx="35" ry="40" fill="none" stroke="url(#owlGradient)" strokeWidth="2" className="owl-body"/>
-                  
-                  {/* Owl Eyes */}
                   <circle cx="48" cy="55" r="10" fill="none" stroke="url(#owlGradient)" strokeWidth="2" className="owl-eye"/>
                   <circle cx="72" cy="55" r="10" fill="none" stroke="url(#owlGradient)" strokeWidth="2" className="owl-eye"/>
                   <circle cx="48" cy="55" r="5" fill="#1060E0" className="owl-pupil"/>
                   <circle cx="72" cy="55" r="5" fill="#1060E0" className="owl-pupil"/>
                   <circle cx="50" cy="53" r="2" fill="white" className="owl-highlight"/>
                   <circle cx="74" cy="53" r="2" fill="white" className="owl-highlight"/>
-                  
-                  {/* Owl Beak */}
                   <path d="M56 63 L60 70 L64 63 Z" fill="url(#owlGradient)" className="owl-beak"/>
-                  
-                  {/* Owl Ears/Tufts */}
                   <path d="M38 30 L42 48 L46 38" stroke="url(#owlGradient)" strokeWidth="2" fill="none" className="owl-ear"/>
                   <path d="M82 30 L78 48 L74 38" stroke="url(#owlGradient)" strokeWidth="2" fill="none" className="owl-ear"/>
-                  
-                  {/* Wing Details */}
                   <path d="M30 68 Q38 78 46 73" stroke="url(#owlGradient)" strokeWidth="2" fill="none" className="owl-wing"/>
                   <path d="M90 68 Q82 78 74 73" stroke="url(#owlGradient)" strokeWidth="2" fill="none" className="owl-wing"/>
-                  
-                  {/* Gradient Definition */}
                   <defs>
                     <linearGradient id="owlGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stopColor="#1060E0"/>
@@ -77,6 +66,32 @@ const MyStory: React.FC = () => {
                     </filter>
                   </defs>
                 </svg>
+              </div>
+              <div className="text-center">
+                <h3 className="text-2xl font-bold font-montserrat text-pink-400 mb-2">DIYA NATHWANI</h3>
+                <p className="text-blue-400 font-medium">CONTENT STRATEGIST & CREATIVE CURIOUS</p>
+                <div className="mt-4 text-xs text-gray-500">
+                  <p>ID: DN2025</p>
+                  <p>STATUS: ACTIVE</p>
+                </div>
+              </div>
+            </div>
+            */}
+
+            {/* New Profile Photo */}
+            <div className="order-2 md:order-1">
+              <div className="w-96 h-96 mx-auto mb-6 relative group">
+                <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 p-1">
+                  <div className="w-full h-full rounded-full overflow-hidden">
+                    <img 
+                      src="/src/components/Assets/My close up photo (2).jpg" 
+                      alt="Diya Nathwani"
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+                <div className="absolute -inset-4 bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-blue-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 rounded-full border-2 border-white/10 mix-blend-overlay"></div>
               </div>
               <div className="text-center">
                 <h3 className="text-2xl font-bold font-montserrat text-pink-400 mb-2">DIYA NATHWANI</h3>

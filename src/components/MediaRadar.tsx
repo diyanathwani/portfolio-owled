@@ -21,81 +21,94 @@ const MediaRadar: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Single source of truth for sector data
+  // Note: Angles are adjusted to start from top (270 degrees) and go clockwise
   const sectors: RadarSector[] = [
     {
-      id: 'social-media',
-      title: 'Social Media Content Strategy',
-      angle: 0,
-      color: '#ff0064',
-      glowColor: 'rgba(255, 0, 100, 0.6)',
-      skills: [
-        'Multi-platform execution (Instagram, LinkedIn, Twitter/X, YouTube Shorts, Reels)',
-        'Moment marketing & trend spotting (fast adaptive content)',
-        'Campaign design for B2B & B2C brands',
-        'Audience-tailored content (youth, corporate, international)'
-      ]
-    },
-    {
-      id: 'writing',
-      title: 'Long-Form & Short-Form Writing',
-      angle: 60,
-      color: '#0064ff',
-      glowColor: 'rgba(0, 100, 255, 0.6)',
-      skills: [
-        'SEO blogs & articles (business psychology, consumer insights)',
-        'Micro-content: hooks, captions, viral storytelling snippets',
-        'Case studies & whitepapers (strategic + proof-driven)'
-      ]
-    },
-    {
-      id: 'video-audio',
-      title: 'Video & Audio Scripting',
-      angle: 120,
+      id: 'brand-strategy',
+      title: 'Brand Strategy',
+      angle: 270, // Top
       color: '#00ff64',
       glowColor: 'rgba(0, 255, 100, 0.6)',
       skills: [
-        'YouTube scriptwriting (educational + brand storytelling)',
-        'Podcast research & scriptwriting (deep compatibility-driven creator matching)',
-        'Paid ad scripts (conversion-focused storytelling, e.g. Melooha ads 🚀)'
+        'Brand voice development',
+        'Content strategy and planning',
+        'Competitor analysis',
+        'Brand positioning and messaging'
       ]
     },
     {
-      id: 'corporate',
-      title: 'Professional & Corporate Content',
-      angle: 180,
-      color: '#ff6400',
-      glowColor: 'rgba(255, 100, 0, 0.6)',
-      skills: [
-        'Website content & rebranding (e.g. Fiscaleye Pvt. Ltd.)',
-        'Email marketing campaigns & newsletters',
-        'Professional writing (research papers, technical & scientific)'
-      ]
-    },
-    {
-      id: 'psychology',
-      title: 'Consumer & Market Psychology Integration',
-      angle: 240,
-      color: '#6400ff',
-      glowColor: 'rgba(100, 0, 255, 0.6)',
-      skills: [
-        'B2B vs B2C differentiation in tone & approach',
-        'Consumer psychology insights → brand resonance',
-        'Content experimentation across industries (from SaaS to lifestyle brands)'
-      ]
-    },
-    {
-      id: 'leadership',
-      title: 'Creative Execution & Team Leadership',
-      angle: 300,
+      id: 'social-media',
+      title: 'Social Media',
+      angle: 330, // Top-right
       color: '#ff0064',
       glowColor: 'rgba(255, 0, 100, 0.6)',
       skills: [
-        'Social media campaigns from ideation → analytics',
-        'End-to-end brand storytelling (StatGlow, Kukreja Builders, Vidhi Chotai, etc.)',
-        'Cross-team coordination (writers, designers, editors, creators)'
+        'Multi-platform content strategy',
+        'Trend analysis and moment marketing',
+        'Campaign development for B2B & B2C',
+        'Audience segmentation and targeting'
+      ]
+    },
+    {
+      id: 'content-creation',
+      title: 'Content',
+      angle: 30, // Bottom-right
+      color: '#0064ff',
+      glowColor: 'rgba(0, 100, 255, 0.6)',
+      skills: [
+        'SEO-optimized blog writing',
+        'Engaging social media content',
+        'Case studies and whitepapers',
+        'Email marketing campaigns'
+      ]
+    },
+    {
+      id: 'analytics',
+      title: 'Analytics',
+      angle: 90, // Bottom
+      color: '#ff6400',
+      glowColor: 'rgba(255, 100, 0, 0.6)',
+      skills: [
+        'Performance tracking and reporting',
+        'Data-driven decision making',
+        'ROI analysis',
+        'A/B testing and optimization'
+      ]
+    },
+    {
+      id: 'video-production',
+      title: 'Video',
+      angle: 150, // Bottom-left
+      color: '#6400ff',
+      glowColor: 'rgba(100, 0, 255, 0.6)',
+      skills: [
+        'Scriptwriting and storyboarding',
+        'Video editing and production',
+        'Motion graphics and animation',
+        'Live streaming setup'
+      ]
+    },
+    {
+      id: 'community',
+      title: 'Community',
+      angle: 210, // Top-left
+      color: '#ff00ff',
+      glowColor: 'rgba(255, 0, 255, 0.6)',
+      skills: [
+        'Audience engagement strategies',
+        'Community management',
+        'Influencer partnerships',
+        'User-generated content campaigns'
       ]
     }
   ];
+
+  // This array is just for the radar line labels (shortened titles)
+  const radarLineSectors = sectors.map(sector => ({
+    id: sector.id,
+    title: sector.title.split(' ')[0] // Just use first word for radar labels
+  }));
 
   const getSectorPath = (angle: number, isHovered: boolean) => {
     const radius = isHovered ? 180 : 160;
@@ -171,8 +184,9 @@ const MediaRadar: React.FC = () => {
                   key={`line-${sector.id}`}
                   x1="200"
                   y1="200"
-                  x2={200 + 180 * Math.cos((sector.angle - 90) * (Math.PI / 180))}
-                  y2={200 + 180 * Math.sin((sector.angle - 90) * (Math.PI / 180))}
+                  // Remove the -90 degree offset since we're now using the correct angles
+                  x2={200 + 180 * Math.cos(sector.angle * (Math.PI / 180))}
+                  y2={200 + 180 * Math.sin(sector.angle * (Math.PI / 180))}
                   stroke="rgba(255, 255, 255, 0.1)"
                   strokeWidth="1"
                 />
@@ -190,42 +204,63 @@ const MediaRadar: React.FC = () => {
               />
 
               {/* Sectors */}
-              {sectors.map((sector) => (
-                <path
-                  key={sector.id}
-                  d={getSectorPath(sector.angle, activeSector === sector.id)}
-                  fill={activeSector === sector.id ? sector.glowColor : 'rgba(255, 255, 255, 0.05)'}
-                  stroke={sector.color}
-                  strokeWidth="2"
-                  className="cursor-pointer transition-all duration-300"
-                  onMouseEnter={() => setActiveSector(sector.id)}
-                  onMouseLeave={() => setActiveSector(null)}
-                  style={{
-                    filter: activeSector === sector.id ? `drop-shadow(0 0 20px ${sector.color})` : 'none'
-                  }}
-                />
-              ))}
+              {sectors.map((sector) => {
+                
+                return (
+                  <path
+                    key={sector.id}
+                    d={getSectorPath(sector.angle, activeSector === sector.id)}
+                    fill={activeSector === sector.id ? sector.glowColor : 'rgba(255, 255, 255, 0.05)'}
+                    stroke={sector.color}
+                    strokeWidth="2"
+                    className="cursor-pointer transition-all duration-300"
+                    onMouseEnter={() => setActiveSector(sector.id)}
+                    onMouseLeave={() => setActiveSector(null)}
+                    style={{
+                      filter: activeSector === sector.id ? `drop-shadow(0 0 20px ${sector.color})` : 'none'
+                    }}
+                  />
+                );
+              })}
 
               {/* Sector Labels */}
               {sectors.map((sector) => {
                 const labelRadius = 140;
-                const x = 200 + labelRadius * Math.cos((sector.angle - 90) * (Math.PI / 180));
-                const y = 200 + labelRadius * Math.sin((sector.angle - 90) * (Math.PI / 180));
+                // Remove the -90 degree offset since we're now using the correct angles
+                const x = 200 + labelRadius * Math.cos(sector.angle * (Math.PI / 180));
+                const y = 200 + labelRadius * Math.sin(sector.angle * (Math.PI / 180));
                 
                 return (
-                  <text
-                    key={`label-${sector.id}`}
-                    x={x}
-                    y={y}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    className="text-xs font-bold fill-white pointer-events-none"
-                    style={{
-                      textShadow: activeSector === sector.id ? `0 0 10px ${sector.color}` : 'none'
-                    }}
-                  >
-                    {sector.title.split(' ').slice(0, 2).join(' ')}
-                  </text>
+                  <g>
+                    <circle
+                      cx={x}
+                      cy={y}
+                      r="16"
+                      fill={activeSector === sector.id ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0.5)'}
+                      className="transition-all duration-300"
+                    />
+                    <text
+                      key={`label-${sector.id}`}
+                      x={x}
+                      y={y + 1}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      className="font-bold fill-white pointer-events-none select-none"
+                      style={{
+                        textShadow: activeSector === sector.id 
+                          ? `0 0 15px ${sector.color}, 0 0 30px ${sector.color}` 
+                          : '0 0 5px rgba(0,0,0,0.7)',
+                        fontSize: '14px',
+                        fontWeight: 700,
+                        letterSpacing: '0.5px',
+                        transition: 'all 0.3s ease',
+                        pointerEvents: 'none',
+                        userSelect: 'none'
+                      }}
+                    >
+                      {sector.title.split(' ')[0]}
+                    </text>
+                  </g>
                 );
               })}
 

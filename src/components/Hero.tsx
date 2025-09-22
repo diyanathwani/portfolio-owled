@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, Download, Eye, Mail } from 'lucide-react';
+import { ArrowDown, Download, Eye, Linkedin } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -41,38 +41,36 @@ const Hero: React.FC = () => {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 fade-in-delayed">
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 fade-in-delayed">
           <a 
             href="https://drive.google.com/file/d/1NMy4RnTABgUIFH9JjmbyNt5s-4GXCl0o/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="neon-button flex items-center space-x-3"
+            className="neon-button flex items-center space-x-2 px-6 py-3"
           >
-            <Download size={20} />
-            <span>Download Resume</span>
+            <Download size={18} />
+            <span>Resume</span>
           </a>
           <a 
             href="https://drive.google.com/drive/folders/1ZG4zViIWimldxahLyrbXHh9AHk5DkAkK?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
-            className="neon-button flex items-center space-x-3"
+            className="neon-button flex items-center space-x-2 px-6 py-3"
           >
-            <Eye size={20} />
-            <span>See My Portfolio</span>
+            <Eye size={18} />
+            <span>Portfolio</span>
           </a>
           <a 
-            href="#contact"
-            className="neon-button flex items-center space-x-3"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            href="https://www.linkedin.com/in/diya-nathwani6622/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="neon-button flex items-center space-x-2 px-6 py-3"
           >
-            <Mail size={20} />
-            <span>Contact Me</span>
+            <Linkedin size={18} />
+            <span>LinkedIn</span>
           </a>
         </div>
-
+        
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <ArrowDown size={32} className="text-white/50" />
